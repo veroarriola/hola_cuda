@@ -1,10 +1,11 @@
-cmake_minimum_required(VERSION 3.28)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.28)
 
-project(HolaCuda)
+PROJECT(HolaCuda)
+INCLUDE(CheckLanguage)
 
 OPTION(ENABLE_CUDA "Enable CUDA support" ON)
 
-CHECK_LANGUAGE(CUDA)
+check_language(CUDA)
 if(CMAKE_CUDA_COMPILER)
 	ENABLE_LANGUAGE(CUDA)
 else()
