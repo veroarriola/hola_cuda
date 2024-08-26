@@ -4,6 +4,18 @@
 #include <stdio.h>
 #define N 512
 
+void random_ints(int* a, int n)
+{
+   for (int i = 0; i < n; ++i) a[i] = rand();
+}
+
+void print_ints(int* a, int n)
+{
+    printf("[");
+    for (int i = 0; i < n; ++i) printf("%d ", a[i]);
+    printf("]\n");
+}
+
 __global__ void helloCUDA()
 {
     printf("Hello, from CUDA!\n");
@@ -54,6 +66,8 @@ int main()
     // Copiar el resultado de regreso al anfitrión
     cudaMemcpy(c, d_c, size, cudaMemcpyDeviceToHost);
 
+    // Imprimir resultado desde cpu
+    print_ints(c, N);
 
     ///
     /// Limpieza
